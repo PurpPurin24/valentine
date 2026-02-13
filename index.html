@@ -2,27 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Valentine's Day</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* hilangkan scroll horizontal */
+            overflow-y: auto;   /* tetap bisa scroll vertikal jika perlu */
+        }
+
         body {
             background-color: #ffc8fd;
             font-family: 'Comic Sans MS', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
+            justify-content: flex-start; /* flex-start agar konten tetap terlihat di layar kecil */
             text-align: center;
-            max-width: 100vw;
-            overflow-x: hidden;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         h1 {
             color: #ff6b6b;
             font-size: 6vw;
-            margin-bottom: 20px;
+            margin: 20px 0;
+        }
+
+        .gif img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .buttons {
@@ -35,37 +53,18 @@
             border: none;
             border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s;
             font-size: 1.2em;
-            position: relative;
+            transition: transform 0.3s;
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
-        }
-        
-        #yesBtn {
-            background-color: #97cdff;
-            color: white;
-            z-index: 2;
-        }
-
-        #noBtn {
-            background-color: #ff6b6b;
-            color: white;
-            z-index: 1;
-        }
-
-        .gif {
-            margin: 20px 0;
-            max-width: 100%;
-            height: auto;
-        }
+        #yesBtn { background-color: #97cdff; color: white; }
+        #noBtn { background-color: #ff6b6b; color: white; }
 
         .footer {
             position: fixed;
             bottom: 20px;
+            width: 100%;
+            text-align: center;
             color: #ff6b6b;
             font-size: 1.2em;
         }
@@ -79,7 +78,6 @@
             <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW90OGZheHVmM2Z2bmhzOHMwbzlxYWN1ajNpejVsYmk0NDBxYTcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ulnj9d55PSsDmIIyKK/giphy.gif" alt="Cute gif">
         </div>
 
-        <!-- Audio -->
         <audio id="bgMusic" loop preload="auto">
             <source src="music.mp3" type="audio/mpeg">
         </audio>
@@ -93,7 +91,6 @@
     <div class="footer">From <span id="from">Adam</span> to <span id="to">Nay</span> 💕</div>
 
     <script>
-        // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const fromParam = urlParams.get('from');
         const toParam = urlParams.get('to');
@@ -116,7 +113,6 @@
 
         const bgMusic = document.getElementById('bgMusic');
 
-        // Gunakan pointerdown agar kompatibel HP
         yesBtn.addEventListener('pointerdown', () => {
             bgMusic.play().catch(err => console.log("Audio blocked:", err));
 
