@@ -7,16 +7,13 @@
     <style>
         body {
             background-color: #ffc8fd;
-            font-family: 'Comic Sans MS', cursive;
+            font-family: 'Comic Sans MS', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
             margin: 0;
-        }
-
-        .container {
             text-align: center;
         }
 
@@ -66,22 +63,24 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <h1>Will you be my valentine? 💝</h1>
         <div class="gif">
             <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW90OGZheHVmM2Z2bmhzOHMwbzlxYWN1ajNpejVsYmk0NDBxYTcxdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ulnj9d55PSsDmIIyKK/giphy.gif" alt="Cute gif">
         </div>
 
-        <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
+        <!-- Audio -->
+        <audio id="bgMusic" loop preload="auto">
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
 
         <div class="buttons">
             <button id="yesBtn">Bowleh</button>
             <button id="noBtn">Nmau :(</button>
         </div>
     </div>
+
     <div class="footer">From <span id="from">Adam</span> to <span id="to">Nay</span> 💕</div>
 
     <script>
@@ -90,7 +89,6 @@
         const fromParam = urlParams.get('from');
         const toParam = urlParams.get('to');
 
-        // Update the text if parameters exist
         if (fromParam) document.getElementById('from').textContent = fromParam;
         if (toParam) document.getElementById('to').textContent = toParam;
 
@@ -109,8 +107,10 @@
 
         const bgMusic = document.getElementById('bgMusic');
 
-        yesBtn.addEventListener('click', () => {
-            bgMusic.play();
+        // Gunakan pointerdown agar kompatibel HP
+        yesBtn.addEventListener('pointerdown', () => {
+            bgMusic.play().catch(err => console.log("Audio blocked:", err));
+
             container.innerHTML = `
                 <h1>Yeaay! I Love You! 💖</h1>
                 <p>Happy Valentine sayanggku cintakuu cantikkuu duniakuu <br> 
@@ -118,8 +118,8 @@
                     im very lucky to have you💕<br> <br>
                     in every universe, in every lifetime, <br>
                     i would always choose you, <br>
-                    a thousand lifetimes wouldn’t <br> be enough to love you🫶
-                    </p>
+                    a thousand lifetimes wouldn’t <br> be enough to love you 🫶
+                </p>
                 <div class="gif">
                     <img src="https://media2.giphy.com/media/h20IwOYYJgCMbj4uaD/giphy.gif?cid=6c09b952nw00t0x7qvmj4220ti59g9te0k2r86xo5h0vir8b&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s" alt="Love gif">
                 </div>
