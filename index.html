@@ -15,11 +15,13 @@
             height: 100vh;
             margin: 0;
             text-align: center;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         h1 {
             color: #ff6b6b;
-            font-size: 2.5em;
+            font-size: 6vw;
             margin-bottom: 20px;
         }
 
@@ -38,6 +40,11 @@
             position: relative;
         }
 
+        .container {
+            width: 90%;
+            max-width: 500px;
+        }
+        
         #yesBtn {
             background-color: #97cdff;
             color: white;
@@ -52,6 +59,8 @@
 
         .gif {
             margin: 20px 0;
+            max-width: 100%;
+            height: auto;
         }
 
         .footer {
