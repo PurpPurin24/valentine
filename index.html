@@ -113,9 +113,9 @@
 
         const bgMusic = document.getElementById('bgMusic');
 
-        yesBtn.addEventListener('pointerdown', () => {
+        yesBtn.addEventListener('click', () => {
             bgMusic.play().catch(err => console.log("Audio blocked:", err));
-
+    
             container.innerHTML = `
                 <h1>Yeaay! I Love You! 💖</h1>
                 <p>Happy Valentine sayanggku cintakuu cantikkuu duniakuu <br> 
